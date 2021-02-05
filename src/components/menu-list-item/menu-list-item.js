@@ -13,7 +13,7 @@ const MenuListItem = ({ menuItem, onAddToCart }) => {
       <div className="menu__price">
         Price: <span>{price}$</span>
       </div>
-      <button onClick={() => onAddToCart()} className="menu__btn">
+      <button className="menu__btn" onClick={onAddToCart}>
         Add to cart
       </button>
       <span className={`menu__category_Img ${category}`}></span>

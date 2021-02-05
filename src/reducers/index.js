@@ -36,9 +36,19 @@ const reducer = (state = initialState, action) => {
         url: item.url,
         id: item.id,
       };
+
       return {
         ...state,
+        error: false,
         items: [newItem],
+      };
+    case "ITEM_REMOVE_FROM_CART":
+      const idx = action.payload;
+      const itemIndex = state.items.findIndex((item) => item.id === idx);
+
+      return {
+        ...state,
+        items: [...state.items(0, itemIndex), ...state.items(itemIndex)],
       };
     default:
       return state;

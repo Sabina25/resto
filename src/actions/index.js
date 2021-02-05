@@ -24,4 +24,11 @@ const addedToCart = (id) => {
   };
 };
 
-export { menuLoaded, menuRequsted, menuError, addedToCart };
+const deleteFromCart = (id) => {
+  return {
+    type: "ITEM_REMOVE_FROM_CART",
+    payload: id,
+  };
+};
+
+export { menuLoaded, menuRequsted, menuError, addedToCart, deleteFromCart };
