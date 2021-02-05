@@ -1,12 +1,44 @@
 const initialState = {
-  manu: [],
+  menu: [],
+  loading: true,
+  error: false,
+  items: [],
 };
 
-const reducer = (state, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "MENU_LOADED":
       return {
-        menu: action.playload,
+        ...state,
+        menu: action.payload,
+        loading: false,
+        error: false,
+      };
+    case "MENU_REQUSTED":
+      return {
+        menu: state.menu,
+        loading: true,
+        error: false,
+      };
+    case "MENU_ERROR":
+      return {
+        ...state,
+        menu: state.menu,
+        loading: true,
+        error: true,
+      };
+    case "ITEM_ADD_TO_CART":
+      const id = action.payload;
+      const item = state.menu.find((item) => item.id === id);
+      const newItem = {
+        title: item.title,
+        price: item.price,
+        url: item.url,
+        id: item.id,
+      };
+      return {
+        ...state,
+        items: [newItem],
       };
     default:
       return state;

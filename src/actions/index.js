@@ -1,8 +1,27 @@
 const menuLoaded = (newMenu) => {
   return {
     type: "MENU_LOADED",
-    playload: newMenu,
+    payload: newMenu,
   };
 };
 
-export { menuLoaded };
+const menuRequsted = (newMenu) => {
+  return {
+    type: "MENU_REQUSTED",
+  };
+};
+
+const menuError = () => {
+  return {
+    type: "MENU_ERROR",
+  };
+};
+
+const addedToCart = (id) => {
+  return {
+    type: "ITEM_ADD_TO_CART",
+    payload: id,
+  };
+};
+
+export { menuLoaded, menuRequsted, menuError, addedToCart };
